@@ -22,10 +22,10 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+          {/* <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> */}
           <script async src="assets/js/vendor/core.min.js"></script>
 
-
+          <script async src="assets/js/main.js"></script>
           <script async src="assets/js/vendor/popper.min.js"></script>
           <script async src="assets/js/vendor/bootstrap.min.js"></script>
 
@@ -34,7 +34,7 @@ class MyDocument extends Document {
           <script async src="assets/js/vendor/slider.min.js"></script>
           <script async src="assets/js/vendor/countdown.min.js"></script>
           <script async src="assets/js/vendor/shuffle.min.js"></script>
-          <script async src="assets/js/main.js"></script>
+          
         </body>
       </Html>
     )

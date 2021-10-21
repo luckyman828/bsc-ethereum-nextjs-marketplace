@@ -1,8 +1,8 @@
+/* pages/creator-dashboard.js */
 import { ethers } from 'ethers'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Web3Modal from "web3modal"
-import Image from 'next/image';
 
 import {
   nftmarketaddress, nftaddress
@@ -26,7 +26,7 @@ export default function CreatorDashboard() {
     const connection = await web3Modal.connect()
     const provider = new ethers.providers.Web3Provider(connection)
     const signer = provider.getSigner()
-      
+
     const marketContract = new ethers.Contract(nftmarketaddress, Market.abi, signer)
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider)
     const data = await marketContract.fetchItemsCreated()
@@ -45,51 +45,102 @@ export default function CreatorDashboard() {
       }
       return item
     }))
+    console.log(items);
     /* create a filtered array of items that have been sold */
     const soldItems = items.filter(i => i.sold)
     setSold(soldItems)
     setNfts(items)
     setLoadingState('loaded') 
   }
+  console.log(nfts);
   if (loadingState === 'loaded' && !nfts.length) return (<h1 className="py-10 px-20 text-3xl">No assets created</h1>)
   return (
-    <div>
-      <div className="p-4">
-        <h2 className="text-2xl py-2">Items Created</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
-          {
-            nfts.map((nft, i) => (
-              <div key={i} className="border shadow rounded-xl overflow-hidden">
-                <Image src={nft.image} className="rounded" />
-                <div className="p-4 bg-black">
-                  <p className="text-2xl font-bold text-white">Price - {nft.price} Eth</p>
-                </div>
-              </div>
-            ))
-          }
-        </div>
-      </div>
-        <div className="px-4">
-        {
-          Boolean(sold.length) && (
-            <div>
-              <h2 className="text-2xl py-2">Items sold</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
-                {
-                  sold.map((nft, i) => (
-                    <div key={i} className="border shadow rounded-xl overflow-hidden">
-                      <Image src={nft.image} className="rounded" />
-                      <div className="p-4 bg-black">
-                        <p className="text-2xl font-bold text-white">Price - {nft.price} Eth</p>
+    <section className="author-area">
+      <div className="container">
+          <div className="row">
+              <div className="col-12">
+                  {/* Intro */}
+                  <div className="intro d-flex justify-content-between align-items-end m-0">
+                      <div className="intro-content">
+                          <span>GET STARTED</span>
+                          <h3 className="mt-3 mb-0">Creator Dashboard</h3>
                       </div>
-                    </div>
-                  ))
-                }
+                  </div>
               </div>
-            </div>
-          )
-        }
-        </div>
-    </div>
+          </div>
+          <div className="row items">
+              {
+                nfts.map((nft, i) => {
+                  return (<div key={i} className="col-12 col-sm-6 col-lg-3 item">
+                      <div className="card">
+                          <div className="image-over">
+                              <a href="#">
+                                  <img className="card-img-top" src={nft.image} alt="" />
+                              </a>
+                          </div>
+                          {/* Card Caption */}
+                          <div className="card-caption col-12 p-0">
+                              {/* Card Body */}
+                              <div className="card-body">
+                                  <a href="#">
+                                      <h5 className="mb-0">{nft.title}</h5>
+                                  </a>
+                                  <div className="seller d-flex align-items-center my-3">
+                                      <span>Description</span>
+                                      <a href="#">
+                                          <h6 className="ml-2 mb-0">{nft.description}</h6>
+                                      </a>
+                                  </div>
+                                  <div className="card-bottom d-flex justify-content-between">
+                                      <span>Price {nft.price} ETH</span>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>)
+                })
+              }
+          </div>
+      </div>
+    </section>
+
+    // <div>
+    //   <div className="p-4">
+    //     <h2 className="text-2xl py-2">Items Created</h2>
+    //       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
+    //       {
+    //         nfts.map((nft, i) => (
+    //           <div key={i} className="border shadow rounded-xl overflow-hidden">
+    //             <img src={nft.image} className="rounded" />
+    //             <div className="p-4 bg-black">
+    //               <p className="text-2xl font-bold text-white">Price - {nft.price} Eth</p>
+    //             </div>
+    //           </div>
+    //         ))
+    //       }
+    //     </div>
+    //   </div>
+    //     <div className="px-4">
+    //     {
+    //       Boolean(sold.length) && (
+    //         <div>
+    //           <h2 className="text-2xl py-2">Items sold</h2>
+    //           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
+    //             {
+    //               sold.map((nft, i) => (
+    //                 <div key={i} className="border shadow rounded-xl overflow-hidden">
+    //                   <img src={nft.image} className="rounded" />
+    //                   <div className="p-4 bg-black">
+    //                     <p className="text-2xl font-bold text-white">Price - {nft.price} Eth</p>
+    //                   </div>
+    //                 </div>
+    //               ))
+    //             }
+    //           </div>
+    //         </div>
+    //       )
+    //     }
+    //     </div>
+    // </div>
   )
 }
