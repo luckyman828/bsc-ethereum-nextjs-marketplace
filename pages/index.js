@@ -5,7 +5,7 @@ import Web3Modal from "web3modal"
 import Image from 'next/image';
 
 import {
-  nftaddress, nftmarketaddress, mytokenaddress
+  nftaddress, nftmarketaddress, mytokenaddress, rpcURL
 } from '../config'
 
 import NFT from '../artifacts/contracts/NFT.sol/NFT.json'
@@ -20,7 +20,7 @@ export default function Home() {
   }, [])
   
   async function loadNFTs() {    
-    const provider = new ethers.providers.JsonRpcProvider()
+    const provider = new ethers.providers.JsonRpcProvider(rpcURL)
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider)
     const marketContract = new ethers.Contract(nftmarketaddress, Market.abi, provider)
     const data = await marketContract.fetchMarketItems()
@@ -74,7 +74,7 @@ export default function Home() {
           {
             nfts.map((nft, i) => (
               <div key={i} className="border shadow rounded-xl overflow-hidden">
-                <Image src={nft.image} />
+                <Image src={nft.image} width={350} height={350} />
                 <div className="p-4">
                   <p style={{ height: '64px' }} className="text-2xl font-semibold">{nft.name}</p>
                   <div style={{ height: '70px', overflow: 'hidden' }}>
