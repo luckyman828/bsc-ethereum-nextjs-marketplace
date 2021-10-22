@@ -43,6 +43,7 @@ export default function CreateItem() {
   }
   
   async function createMarket() {
+    
     const { name, description, price } = formInput
     if (!name || !description || !price || !fileUrl) 
     {
@@ -143,13 +144,12 @@ export default function CreateItem() {
                           )
                         }
                         <div className="col-12">
-                                {minting && (
-                                    <button className="btn w-100 mt-3 mt-sm-4" type="button" onClick={createMarket}>Create Item</button>
-                                )}
-                                {!minting && (
-                                    <span className="btn w-100 mt-3 mt-sm-4 disabled">Uploading...</span>
-                                )}
-                            
+                          {minting && (
+                              <button className="btn w-100 mt-3 mt-sm-4" type="button" onClick={createMarket}>Create Item</button>
+                          )}
+                          {!minting && (
+                              <span className="btn w-100 mt-3 mt-sm-4 disabled">Uploading...</span>
+                          )}
                         </div>
                     </div>
                 </form>

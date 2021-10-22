@@ -24,6 +24,7 @@ export default function CreatorDashboard() {
       network: "mainnet",
       cacheProvider: true,
     })
+    // const web3Modal = new Web3Modal()
     const connection = await web3Modal.connect()
     const provider = new ethers.providers.Web3Provider(connection)
     const signer = provider.getSigner()
@@ -53,8 +54,13 @@ export default function CreatorDashboard() {
     setNfts(items)
     setLoadingState('loaded') 
   }
-  console.log(nfts);
-  if (loadingState === 'loaded' && !nfts.length) return (<h1 className="py-10 px-20 text-3xl">No assets created</h1>)
+  
+  if (loadingState === 'loaded' && !nfts.length) return (
+    <section className="author-area">
+    <div className="container">
+      <h1 className="py-10 px-20 text-3xl">No assets owned</h1>
+    </div>
+  </section>)
   return (
     <section className="author-area">
       <div className="container">

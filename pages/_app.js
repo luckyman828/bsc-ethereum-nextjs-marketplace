@@ -2,8 +2,28 @@
 import '../styles/globals.css'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
+import Web3Modal from 'web3modal'
+import { ethers } from 'ethers'
 
 function MyApp({ Component, pageProps }) {
+
+  // const [connecting, setConnecting] = useState(false);
+  const [address, setAddress] = useState(null);
+  
+  async function _connectWallet() {
+    const web3Modal = new Web3Modal()
+    
+    const connection = await web3Modal.connect()
+    
+    const provider = new ethers.providers.Web3Provider(connection)
+    const signer = provider.getSigner();
+    const wallet = await signer.getAddress();
+    const tempwallet = wallet.slice(0,5) + "..." + wallet.slice(-3)
+    setAddress(tempwallet)
+    
+  }
+
   return (
     <div className="main">
       <header id="header">
@@ -59,7 +79,13 @@ function MyApp({ Component, pageProps }) {
                     {/* Navbar Action Button */}
                     <ul className="navbar-nav action">
                         <li className="nav-item ml-3">
-                            <a href="/wallet-connect" className="btn ml-lg-auto btn-bordered-white"><i className="icon-wallet mr-md-2" />Wallet Connect</a>
+                          {!address && (
+                              <a className="btn ml-lg-auto btn-bordered-white" onClick={_connectWallet}><i className="icon-wallet mr-md-2" />Wallet Connect</a>
+                          )}
+                          {address && (
+                              <span className="btn ml-lg-auto btn-bordered-white"><i className="icon-wallet mr-md-2" />{address}</span>
+                          )}
+                          
                         </li>
                     </ul>
                     
