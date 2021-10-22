@@ -91,7 +91,7 @@ export default function Home() {
                       <div className="card">
                           <div className="image-over">
                               <a href="#">
-                                  <img className="card-img-top" src={nft.image} alt="" />
+                                  <Image className="card-img-top" src={nft.image} alt="" width={350} height={350}/>
                               </a>
                           </div>
                           {/* Card Caption */}

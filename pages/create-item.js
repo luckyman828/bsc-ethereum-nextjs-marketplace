@@ -4,6 +4,7 @@ import { ethers } from 'ethers'
 import { create as ipfsHttpClient } from 'ipfs-http-client'
 import { useRouter } from 'next/router'
 import Web3Modal from 'web3modal'
+import Image from 'next/image'
 
 const client = ipfsHttpClient('https://ipfs.infura.io:5001/api/v0')
 
@@ -136,7 +137,7 @@ export default function CreateItem() {
                           fileUrl && (
                             <div className="row col-12 justify-content-center">
                               <div className="blog-thumb col-12 mt-3">
-                                <img className="w-80 " src={fileUrl} alt="" />
+                                <Image className="w-80 " src={fileUrl} alt="" width={350} height={350} />
                               </div>
                             </div>
                           )

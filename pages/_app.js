@@ -1,6 +1,7 @@
 /* pages/_app.js */
 import '../styles/globals.css'
 import Link from 'next/link'
+import Image from 'next/image'
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -10,26 +11,33 @@ function MyApp({ Component, pageProps }) {
             <nav data-aos="zoom-out" data-aos-delay={800} className="navbar navbar-expand">
                 <div className="container header">
                     {/* Navbar Brand*/}
-                    <a className="navbar-brand" href="/">
-                        <img className="navbar-brand-sticky" src="img/logo.png" alt="sticky brand-logo" />
-                    </a>
+                    <Link href="/">
+                      <a className="navbar-brand">
+                        <Image className="navbar-brand-sticky" src="/img/logo.png" alt="sticky brand-logo" width={45} height={55}/>
+                      </a>
+                    </Link>
                     <div className="ml-auto" />
                     {/* Navbar */}
                     <ul className="navbar-nav items mx-auto">
                         <li className="nav-item">
-                            <a className="nav-link" href="/">Home</a>
+                          <Link href="/">
+                            <a className="nav-link">Home</a>
+                          </Link>
                         </li>
                         <li className="nav-item">
-                            <a href="/create-item" className="nav-link">Sell Digital Asset</a>
+                          <Link href="/create-item">
+                            <a className="nav-link">Sell Digital Asset</a>
+                          </Link>
                         </li>
                         <li className="nav-item">
-                            <a href="/creator-dashboard" className="nav-link">Creator Dashboard</a>
+                          <Link href="/creator-dashboard">
+                            <a className="nav-link">Creator Dashboard</a>
+                          </Link>
                         </li>
                         <li className="nav-item">
-                            <a href="/my-assets" className="nav-link">My Digital Assets</a>
-                        </li>
-                        <li className="nav-item">
-                            <a href="/explore" className="nav-link">Explore</a>
+                          <Link href="/my-assets">
+                            <a className="nav-link">My Digital Assets</a>
+                          </Link>
                         </li>
                     </ul>
                     {/* Navbar Icons */}

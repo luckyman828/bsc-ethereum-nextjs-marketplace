@@ -3,6 +3,7 @@ import { ethers } from 'ethers'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Web3Modal from "web3modal"
+import Image from 'next/image'
 
 import {
   nftmarketaddress, nftaddress
@@ -62,7 +63,7 @@ export default function MyAssets() {
                     <div className="card">
                         <div className="image-over">
                             <a href="#">
-                                <img className="card-img-top" src={nft.image} alt="" />
+                                <Image className="card-img-top" src={nft.image} alt="" width={350} height={350}/>
                             </a>
                         </div>
                         {/* Card Caption */}
