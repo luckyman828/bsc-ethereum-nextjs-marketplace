@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
+import Script from 'next/script'
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -18,17 +19,17 @@ class MyDocument extends Document {
         <body>
             <Main />
             <NextScript />
-            <script src="/assets/js/vendor/core.min.js"></script>
+            <Script src="/assets/js/vendor/core.min.js"></Script>
 
-            <script src="/assets/js/vendor/popper.min.js"></script>
-            <script src="/assets/js/vendor/bootstrap.min.js"></script>
+            <Script src="/assets/js/vendor/popper.min.js"></Script>
+            <Script src="/assets/js/vendor/bootstrap.min.js"></Script>
 
-            <script src="/assets/js/vendor/all.min.js"></script>
-            <script src="/assets/js/vendor/slider.min.js"></script>
-            <script src="/assets/js/vendor/countdown.min.js"></script>
-            <script src="/assets/js/vendor/shuffle.min.js"></script>
+            <Script src="/assets/js/vendor/all.min.js"></Script>
+            <Script src="/assets/js/vendor/slider.min.js"></Script>
+            <Script src="/assets/js/vendor/countdown.min.js"></Script>
+            <Script src="/assets/js/vendor/shuffle.min.js"></Script>
 
-            <script src="/assets/js/main.js"></script>
+            <Script src="/assets/js/main.js"></Script>
         </body>
       </Html>
     )
