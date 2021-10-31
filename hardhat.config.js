@@ -27,6 +27,11 @@ module.exports = {
     rinkeby: {
       url: `https://rinkeby.infura.io/v3/${infuraId}`,
       accounts: [privateKey],
+    },
+
+    bsctestnet: {
+      url: 'https://data-seed-prebsc-1-s1.binance.org:8545',
+      accounts: [privateKey],
     }
   },
   solidity: {
