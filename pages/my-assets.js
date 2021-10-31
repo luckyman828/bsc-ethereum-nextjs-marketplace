@@ -52,13 +52,38 @@ export default function MyAssets() {
   if (loadingState === 'loaded' && !nfts.length) return (
   <section className="author-area">
     <div className="container">
-      <h1 className="py-10 px-20 text-3xl">No assets owned</h1>
+        <div className="row">
+          <div className="col-12">
+              {/* Intro */}
+              <div className="intro d-flex justify-content-between align-items-end m-0">
+                  <div className="intro-content">
+                      <span>My Assets</span>
+                  </div>
+              </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-12">
+            <h4 className="py-10 px-20 text-3xl">No assets owned</h4>
+          </div>
+        </div>
+        
     </div>
   </section>)
   return (
 
     <section className="author-area">
       <div className="container">
+          <div className="row">
+              <div className="col-12">
+                  {/* Intro */}
+                  <div className="intro d-flex justify-content-between align-items-end m-0">
+                      <div className="intro-content">
+                          <span>My Assets</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
           <div className="row items">
               {nfts.map((nft, i) => {
                 <div key={i} className="col-12 col-sm-6 col-lg-3 item">

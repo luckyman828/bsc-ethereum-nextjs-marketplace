@@ -104,8 +104,8 @@ export default function CreateItem() {
                 {/* Intro */}
                 <div className="intro mt-5 mt-lg-0 mb-4 mb-lg-5">
                     <div className="intro-content">
-                        <span>Get Started</span>
-                        <h3 className="mt-3 mb-0">Create Item</h3>
+                        <span>Create Item</span>
+                        
                     </div>
                 </div>
                 {/* Item Form */}
