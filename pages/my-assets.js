@@ -31,6 +31,7 @@ export default function MyAssets() {
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider)
     const data = await marketContract.fetchMyNFTs()
     
+    
     const items = await Promise.all(data.map(async i => {
       const tokenUri = await tokenContract.tokenURI(i.tokenId)
       const meta = await axios.get(tokenUri)
@@ -45,6 +46,7 @@ export default function MyAssets() {
       return item
     }))
     setNfts(items)
+    console.log(nfts);
     setLoadingState('loaded') 
   }
   if (loadingState === 'loaded' && !nfts.length) return (
@@ -76,14 +78,14 @@ export default function MyAssets() {
                                 <div className="seller d-flex align-items-center my-3">
                                     <span>Owned By</span>
                                     <a href="#">
-                                        <h6 className="ml-2 mb-0">item.owner</h6>
+                                        <h6 className="ml-2 mb-0">nft.owner</h6>
                                     </a>
                                 </div>
                                 <div className="card-bottom d-flex justify-content-between">
                                     <span>{nft.price}</span>
                                     <span>3</span>
                                 </div>
-                                <a className="btn btn-bordered-white btn-smaller mt-3" href="#"><i className="icon-handbag mr-2" />{item.btnText}</a>
+                                <a className="btn btn-bordered-white btn-smaller mt-3" href="#"><i className="icon-handbag mr-2" />test</a>
                             </div>
                         </div>
                     </div>

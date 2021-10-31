@@ -46,7 +46,7 @@ function MyApp({ Component, pageProps }) {
                         </li>
                         <li className="nav-item">
                           <Link href="/create-item">
-                            <a className="nav-link">Sell Digital Asset</a>
+                            <a className="nav-link">Create Item</a>
                           </Link>
                         </li>
                         <li className="nav-item">

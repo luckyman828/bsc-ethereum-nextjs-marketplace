@@ -69,7 +69,12 @@ export default function Home() {
     loadNFTs()
   }
 
-  if (loadingState === 'loaded' && !nfts.length) return (<h1 className="px-20 py-10 text-3xl">No items in marketplace</h1>)
+  if (loadingState === 'loaded' && !nfts.length) return (
+    <section className="author-area">
+      <div className="container">
+        <h1 className="py-10 px-20 text-3xl">No assets owned</h1>
+      </div>
+    </section>)
   return (
     <section className="author-area">
       <div className="container">

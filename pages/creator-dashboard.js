@@ -47,7 +47,7 @@ export default function CreatorDashboard() {
       }
       return item
     }))
-    console.log(items);
+    
     /* create a filtered array of items that have been sold */
     const soldItems = items.filter(i => i.sold)
     setSold(soldItems)
@@ -57,10 +57,10 @@ export default function CreatorDashboard() {
   
   if (loadingState === 'loaded' && !nfts.length) return (
     <section className="author-area">
-    <div className="container">
-      <h1 className="py-10 px-20 text-3xl">No assets owned</h1>
-    </div>
-  </section>)
+      <div className="container">
+        <h1 className="py-10 px-20 text-3xl">No assets owned</h1>
+      </div>
+    </section>)
   return (
     <section className="author-area">
       <div className="container">
