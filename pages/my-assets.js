@@ -107,7 +107,7 @@ export default function MyAssets() {
                                     </a>
                                 </div>
                                 <div className="card-bottom d-flex justify-content-between">
-                                    <span>{nft.price}</span>
+                                    <span>{nft.price}BNB</span>
                                     <span>3</span>
                                 </div>
                                 <a className="btn btn-bordered-white btn-smaller mt-3" href="#"><i className="icon-handbag mr-2" />test</a>

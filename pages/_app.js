@@ -33,7 +33,7 @@ function MyApp({ Component, pageProps }) {
                     {/* Navbar Brand*/}
                     <Link href="/">
                       <a className="navbar-brand">
-                        <Image className="navbar-brand-sticky" src="/img/logo.png" alt="sticky brand-logo" width={45} height={55}/>
+                        <Image className="navbar-brand-sticky" src="/img/me.png" alt="sticky brand-logo" width={75} height={75}/>
                       </a>
                     </Link>
                     <div className="ml-auto" />

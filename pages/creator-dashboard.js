@@ -113,7 +113,7 @@ export default function CreatorDashboard() {
                                       </a>
                                   </div>
                                   <div className="card-bottom d-flex justify-content-between">
-                                      <span>Price {nft.price} ETH</span>
+                                      <span>Price {nft.price} BNB</span>
                                   </div>
                               </div>
                           </div>

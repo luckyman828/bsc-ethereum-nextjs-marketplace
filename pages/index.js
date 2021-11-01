@@ -128,7 +128,7 @@ export default function Home() {
                                       </a>
                                   </div>
                                   <div className="card-bottom d-flex justify-content-between">
-                                      <span>Price {nft.price} ETH</span>
+                                      <span>Price {nft.price} BNB</span>
                                   </div>
                                   <a className="btn btn-bordered-white btn-smaller mt-3" onClick={() => buyNft(nft)}><i className="icon-handbag mr-2" />BUY</a>
                               </div>
