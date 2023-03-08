@@ -1,5 +1,5 @@
 
-  export const nftmarketaddress = "0xA4e9e6ade8786B3f2952e030e3230504863A5019"
-  export const nftaddress = "0x990673AA62AB9ef06D686EF3595aDddBE4bc5950"
-  export const mytokenaddress = "0x85D5DACC9AF7cb244390E33C52493dE10188A231"
-  export const rpcURL = "https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161"
+  export const nftmarketaddress = "0xf67335d8281926D002EBcd062c7498076dAd3F80"
+  export const nftaddress = "0x610278D82c0d51Dfa89d6f95e287d36b8eb030f5"
+  export const mytokenaddress = "0xbED00d97c1599EC18f29B3a12EcF6336fDD23c19"
+  export const rpcURL = 'https://data-seed-prebsc-1-s1.binance.org:8545'

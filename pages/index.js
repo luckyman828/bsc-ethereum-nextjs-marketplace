@@ -1,3 +1,4 @@
+import React from 'react';
 import { ethers } from 'ethers'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
@@ -5,12 +6,12 @@ import Web3Modal from "web3modal"
 import Image from 'next/image';
 
 import {
-  nftaddress, nftmarketaddress, mytokenaddress, rpcURL
+  nftaddress, nftmarketaddress, rpcURL
 } from '../config'
 
 import NFT from '../artifacts/contracts/NFT.sol/NFT.json'
 import Market from '../artifacts/contracts/Market.sol/NFTMarket.json'
-import MyToken from '../artifacts/contracts/MyToken.sol/MyToken.json'
+// import MyToken from '../artifacts/contracts/MyToken.sol/MyToken.json'
 
 export default function Home() {
   const [nfts, setNfts] = useState([])
@@ -56,6 +57,7 @@ export default function Home() {
     const transaction = await marketContract.createMarketSale(nftaddress, nft.tokenId, {
       value: price
     })
+    await transaction.wait()
 
     // const myTokenContract = new ethers.Contract(mytokenaddress, MyToken.abi, signer)
     // await myTokenContract.approve(nftmarketaddress, price)
@@ -66,30 +68,77 @@ export default function Home() {
     
     loadNFTs()
   }
-  if (loadingState === 'loaded' && !nfts.length) return (<h1 className="px-20 py-10 text-3xl">No items in marketplace</h1>)
-  return (
-    <div className="flex justify-center">
-      <div className="px-4" style={{ maxWidth: '1600px' }}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
-          {
-            nfts.map((nft, i) => (
-              <div key={i} className="border shadow rounded-xl overflow-hidden">
-                <Image src={nft.image} width={350} height={350} />
-                <div className="p-4">
-                  <p style={{ height: '64px' }} className="text-2xl font-semibold">{nft.name}</p>
-                  <div style={{ height: '70px', overflow: 'hidden' }}>
-                    <p className="text-gray-400">{nft.description}</p>
-                  </div>
+
+  if (loadingState === 'loaded' && !nfts.length) return (
+    <section className="author-area">
+      <div className="container">
+          <div className="row">
+            <div className="col-12">
+                {/* Intro */}
+                <div className="intro d-flex justify-content-between align-items-end m-0">
+                    <div className="intro-content">
+                        <span>Home</span>
+                    </div>
                 </div>
-                <div className="p-4 bg-black">
-                  <p className="text-2xl mb-4 font-bold text-white">{nft.price} ETH</p>
-                  <button className="w-full bg-pink-500 text-white font-bold py-2 px-12 rounded" onClick={() => buyNft(nft)}>Buy</button>
-                </div>
-              </div>
-            ))
-          }
-        </div>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-12">
+              <h4 className="py-10 px-20 text-3xl">No items yet</h4>
+            </div>
+          </div>
+          
       </div>
-    </div>
+    </section>)
+  return (
+    <section className="author-area">
+      <div className="container">
+          <div className="row">
+              <div className="col-12">
+                  {/* Intro */}
+                  <div className="intro d-flex justify-content-between align-items-end m-0">
+                      <div className="intro-content">
+                          <span>Home</span>
+                          
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div className="row items">
+              {
+                nfts.map((nft, i) => {
+                  return (<div key={i} className="col-12 col-sm-6 col-lg-3 item">
+                      <div className="card">
+                          <div className="image-over">
+                              <a href="#">
+                                  <Image className="card-img-top" src={nft.image} alt="" width={350} height={350}/>
+                              </a>
+                          </div>
+                          {/* Card Caption */}
+                          <div className="card-caption col-12 p-0">
+                              {/* Card Body */}
+                              <div className="card-body">
+                                  <a href="#">
+                                      <h5 className="mb-0">{nft.title}</h5>
+                                  </a>
+                                  <div className="seller d-flex align-items-center my-3">
+                                      <span>Description</span>
+                                      <a href="#">
+                                          <h6 className="ml-2 mb-0">{nft.description}</h6>
+                                      </a>
+                                  </div>
+                                  <div className="card-bottom d-flex justify-content-between">
+                                      <span>Price {nft.price} BNB</span>
+                                  </div>
+                                  <a className="btn btn-bordered-white btn-smaller mt-3" onClick={() => buyNft(nft)}><i className="icon-handbag mr-2" />BUY</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>)
+                })
+              }
+          </div>
+      </div>
+    </section>
   )
 }
